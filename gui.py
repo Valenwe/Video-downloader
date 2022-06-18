@@ -69,14 +69,13 @@ def filter_format(format, type):
 def download_command(link, format, type):
     update_logs("[PLEASE WAIT UNTIL IT IS FINISHED] Downloading...")
     code = format["id"]
-    title = format["title"] + "." + format["ext"]
 
-    command = "yt-dlp -q -f {} {} -o".format(code, link)
+    command = "yt-dlp -q -f {} {} --ffmpeg-location ./ffmpeg.exe --add-metadata --xattrs -o".format(code, link)
     args = command.split()
 
     # in case of space in title
-    args.append('{}'.format(SAVE_PATH + "/" + title))
-
+    # args.append('{}'.format(SAVE_PATH + "/" + title))
+    args.append('{}%(title)s.%(ext)s'.format(SAVE_PATH + "/"))
     # print(args)
 
     process = Popen(args)
