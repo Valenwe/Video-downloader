@@ -192,7 +192,8 @@ def convert_audio_to_mp3():
             subprocess.call(command, shell=True)
 
             os.remove(SAVE_PATH + "\\" + file)
-            update_logs("Conversion complete")
+
+    update_logs("Conversion complete")
 
 # -=-=-=-=-=-=-=-=-
 #   GUI FUNCTIONS
