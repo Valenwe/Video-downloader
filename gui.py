@@ -67,7 +67,7 @@ def filter_format(format, type):
 
 
 def download_command(link, format, type):
-    update_logs("Downloading...")
+    update_logs("[PLEASE WAIT UNTIL IT IS FINISHED] Downloading...")
     code = format["id"]
     title = format["title"] + "." + format["ext"]
 
@@ -128,7 +128,7 @@ def format2download(formats, type, playlist=False):
             command = "yt-dlp -q --ffmpeg-location ./ffmpeg.exe --format bestaudio {}  -x --audio-format mp3 --add-metadata --xattrs --embed-thumbnail --output".format(
                 formats)
 
-        update_logs("Downloading playlist...")
+        update_logs("[PLEASE WAIT UNTIL IT IS FINISHED] Downloading playlist...")
 
         args = command.split()
         args.append('{}%(title)s.%(ext)s'.format(SAVE_PATH + "/"))
