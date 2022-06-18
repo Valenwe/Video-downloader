@@ -122,10 +122,10 @@ def format2download(formats, type, playlist=False):
         thread.start()
     else:
         if type == "video":
-            command = "yt-dlp -q --format bestvideo+bestaudio {} --output".format(
+            command = "yt-dlp -q --ffmpeg-location ./ffmpeg.exe --format bestvideo+bestaudio {} --output".format(
                 formats)
         else:
-            command = "yt-dlp -q --format bestaudio {} --output".format(
+            command = "yt-dlp -q --ffmpeg-location ./ffmpeg.exe --format bestaudio {}  -x --audio-format mp3 --add-metadata --xattrs --embed-thumbnail --output".format(
                 formats)
 
         update_logs("Downloading playlist...")
@@ -347,7 +347,7 @@ while True:
 
     elif event == "_CHOICE_":
         if values["_CHOICE_"] not in [MODES[0], MODES[1]]:
-            QUALITY_CHOICE = True
+            QUALITY_CHOICE = False
             window["_QUALITY_"].update(("Quality choice: OFF", "Quality choice: ON")[
                 QUALITY_CHOICE], button_color=(('white', ('red', 'green')[QUALITY_CHOICE])))
 
